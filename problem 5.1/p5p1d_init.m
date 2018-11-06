@@ -1,11 +1,13 @@
 clear
 close all
 
-omega = 0.005; % rad/s
-amplitude = 1; % 1
+%% Get output from simulation
+
+amplitude = 1; % 1 degrees
 
 
-sim('p5p1b.mdl');
+
+sim('p5p1d.mdl');
 
 coordinates = struct(...
             'time', coordinates_output.time',...
@@ -19,9 +21,23 @@ heading = struct(...
 input_struct = struct(...
             'time', input.time',...
             'heading', input.signals.values');
-        
-plot(input_struct.time, input_struct.heading)
+
+
+%% Calculate theoratical output from transfer function
+
+K = 0.1553;  % 1/s. Calculated from task c)
+T = 71.3716; % s.   Calculated from task c)
+
+s = tf('s');
+
+H = (K/T)/(s*(s + 1/T));
+
+T_final = heading.time(end);
+
+step(H, T_final);
+
+%% Plot response 
 hold on
 plot(heading.time, heading.angle)
 
-legend('Input', 'Output with DC offset');
+legend('Heading', 'Output without DC offset');

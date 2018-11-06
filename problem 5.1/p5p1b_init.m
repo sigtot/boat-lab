@@ -19,9 +19,13 @@ heading = struct(...
 input_struct = struct(...
             'time', input.time',...
             'heading', input.signals.values');
-        
-plot(input_struct.time, input_struct.heading)
-hold on
-plot(heading.time, heading.angle)
 
-legend('Input', 'Output with DC offset');
+labels = new_labels('Just a test', 'Test legend', 'Ylabel test', 'Xlabel test');
+
+font_size = new_font_size(14, 18, 12, 12);
+
+data_array = [heading, input_struct];
+
+plot_nice(data_array, labels, font_size);
+
+

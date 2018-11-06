@@ -1,12 +1,12 @@
 Model {
-  Name			  "ship"
+  Name			  "p5p1c"
   Version		  8.9
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.24"
+    ComputedModelVersion    "1.42"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -43,7 +43,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [269.0, 53.0, 1449.0, 1084.0]
+      Location		      [232.0, 18.0, 1449.0, 1084.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -103,9 +103,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "sigurdvt"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 06 09:53:31 2018"
-  RTWModifiedTimeStamp	  463398623
-  ModelVersionFormat	  "1.%<AutoIncrement:24>"
+  LastModifiedDate	  "Tue Nov 06 11:16:03 2018"
+  RTWModifiedTimeStamp	  463403761
+  ModelVersionFormat	  "1.%<AutoIncrement:42>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -157,11 +157,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "ship"
+    model_		    "p5p1c"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "ship"
+      Cell		      "p5p1c"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -212,7 +212,7 @@ Model {
 	  DisabledProps		  []
 	  Description		  ""
 	  StartTime		  "0.0"
-	  StopTime		  "100"
+	  StopTime		  "3000"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -1145,8 +1145,8 @@ Model {
     }
   }
   System {
-    Name		    "ship"
-    Location		    [269, 53, 1718, 1137]
+    Name		    "p5p1c"
+    Location		    [232, 18, 1681, 1102]
     Open		    on
     PortBlocksUseCompactNotation off
     ModelBrowserVisibility  off
@@ -1161,7 +1161,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "37"
+    SIDHighWatermark	    "38"
     Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
@@ -1202,7 +1202,7 @@ Model {
 	    Type		    "checkbox"
 	    Name		    "logic"
 	    Prompt		    "waves"
-	    Value		    "off"
+	    Value		    "on"
 	  }
 	  PropName		  "Parameters"
 	}
@@ -1765,7 +1765,7 @@ Model {
       ZOrder		      47
       Amplitude		      "amplitude"
       Frequency		      "omega"
-      SampleTime	      "0"
+      SampleTime	      "1"
     }
     Block {
       BlockType		      ToWorkspace
@@ -1789,6 +1789,20 @@ Model {
       Position		      [540, 387, 640, 423]
       ZOrder		      50
       VariableName	      "compass_output"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Structure With Time"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace2"
+      SID		      "38"
+      Ports		      [1]
+      Position		      [255, 282, 355, 318]
+      ZOrder		      51
+      VariableName	      "input"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
       Save2DSignal	      "3-D array (concatenate along third dimension)"
@@ -1851,8 +1865,17 @@ Model {
       ZOrder		      7
       SrcBlock		      "Sine Wave"
       SrcPort		      1
-      DstBlock		      "Cargo ship"
-      DstPort		      1
+      Points		      [40, 0]
+      Branch {
+	ZOrder			26
+	DstBlock		"To Workspace2"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			25
+	DstBlock		"Cargo ship"
+	DstPort			1
+      }
     }
     Line {
       ZOrder		      8

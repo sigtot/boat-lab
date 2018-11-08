@@ -14,18 +14,21 @@ coordinates = struct(...
  
 heading = struct(...
             'time', compass_output.time',...
-            'angle', compass_output.signals.values');
+            'values', compass_output.signals.values');
         
 input_struct = struct(...
             'time', input.time',...
-            'heading', input.signals.values');
+            'values', input.signals.values');
 
 labels = new_labels('Just a test', 'Test legend', 'Ylabel test', 'Xlabel test');
 
-font_size = new_font_size(14, 18, 12, 12);
+font_size = new_font_size();
 
-data_array = [heading, input_struct];
+data_array = {heading, input_struct};
 
-plot_nice(data_array, labels, font_size);
+path = 'plots/';
+filename = 'test';
+
+fig = plot_nice(data_array, labels, font_size);
 
 

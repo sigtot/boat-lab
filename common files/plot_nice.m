@@ -5,7 +5,7 @@ function [fig] = plot_nice(data, labels, font_size)
 % -----------------------------------
 % Input:
 %
-% 1. data: array
+% 1. data: cell array
 %       --- struct
 %           --- 'time' : time array corresponding to 'values'
 %           --- 'values' : value array corresponding to 'time'
@@ -26,13 +26,12 @@ function [fig] = plot_nice(data, labels, font_size)
 % 1. fig: Handler to the figure created.
 % ----------------------------------
 %% Code
-
-
+    
     fig = figure;
     
     for i = 1:length(data)
     
-        plot(data(i).time, data(i).values, 'color', rand(1, 3));
+        plot(data{i}.time, data{i}.values, 'color', rand(1, 3));
         hold on
         
     end

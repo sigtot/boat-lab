@@ -1,10 +1,9 @@
 function labels = new_labels(title, legend, xlabel, ylabel)
 
-  labels = struct(...
-    'title', title,...
-    'legend', legend,...
-    'ylabel', xlabel,...
-    'xlabel', ylabel);
-
+  labels.title = title;
+  labels.legend = legend;
+  labels.xlabel = xlabel;
+  labels.ylabel = ylabel;
+  
 end
 

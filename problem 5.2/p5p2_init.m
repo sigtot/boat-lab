@@ -54,7 +54,7 @@ fprintf('sigma_squared = %.2f\nomega_0 = %.4f\n', sigma_squared, omega_0);
 %% Task d)
 
 sigma = sqrt(sigma_squared);
-lambda = 0.1:0.05:0.3;
+lambda = 0.05:0.05:0.3;
 K_w = 2*lambda*omega_0*sigma;
 
 labels{TASK_D}.legend = {labels{TASK_D}.legend};
@@ -63,8 +63,8 @@ for i = 1:length(lambda)
         pxx_theoretical = (omega*K_w).^2./...
               (omega.^4 + omega_0^4 + 2*omega_0.^2*omega.^2*(2*lambda.^2-1));
         legend_to_append = strcat('$\lambda = ', num2str(lambda(i)), '$');
-        labels{TASK_D}.legend = append_label(labels{TASK_D}.legend, legend_to_append);
+        labels{TASK_D} = append_legend(labels{TASK_D}, legend_to_append);
 end
  
 data = structify_data(omega, [pxx, pxx_theoretical]);
-plot_nice(data, labels{TASK_D}, font_size);
+fig = plot_nice(data, labels{TASK_D}, font_size);

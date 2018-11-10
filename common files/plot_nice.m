@@ -1,4 +1,4 @@
-function [fig] = plot_nice(data, labels, font_size)
+function [fig] = plot_nice(data, labels, font_size, varargin)
 %% Function description
 % Makes a nice plot of arbitrary data in LaTeX font and returns a handler
 % to the figure
@@ -11,15 +11,17 @@ function [fig] = plot_nice(data, labels, font_size)
 %           --- 'values' : value array corresponding to 'time'
 % 2. labels: struct
 %         --- 'title' : String containing the title, in LaTeX syntax
-%         --- 'legend' : String containing the legend, in LaTeX syntax
+%         --- 'legend' : String containing the legend, in LaTeX syntax. If only one legend,
+%            pass as string. Otherwise, pass as cell array.
 %         --- 'ylabel' : String containing the ylabel, in LaTeX syntax
 %         --- 'xlabel' : String containing the xlabel, in LaTeX syntax
 % 3. font_size: struct
 %            --- 'title' : Size of the 'title' font
-%            --- 'legend' : Size of the 'legend' font. If only one legend,
-%            pass as string. Otherwise, pass as cell array.
+%            --- 'legend' : Size of the 'legend' font. 
 %            --- 'ylabel' : Size of the 'ylabel' font
 %            --- 'xlabel' : Size of the 'xlabel' font
+% 4. varargin: Optional input parameters
+%            --- 'loglog' : Pass in the string 'loglog' for loglog plot
 %
 % ----------------------------------
 % Output:
@@ -30,22 +32,50 @@ function [fig] = plot_nice(data, labels, font_size)
     
     fig = figure;
     
-    for i = 1:length(data)
+    % Used to get pretty colors
+    colors = linspecer(length(data));
     
-        plot(data{i}.time, data{i}.values, 'color', rand(1, 3));
-        hold on
-        
+    % To get right type for later
+    if ~iscell(data)
+       data = {data}; 
     end
     
     if ~iscell(labels.legend)
        labels.legend = {labels.legend}; 
     end
     
+    % Check for optional input parameters
+    use_loglog = any(strcmp(varargin, 'loglog'));
+    use_grid_on = any(strcmp(varargin, 'grid'));
+    
+    
+    % Plotting
+    if use_loglog
+        for i = 1:length(data)
+
+            loglog(data{i}.time, data{i}.values, 'color', colors(i, :));
+            hold on
+
+        end
+    % Default is ordinary 'plot'    
+    else
+        for i = 1:length(data)
+        
+            plot(data{i}.time, data{i}.values, 'color', colors(i, :));
+            hold on
+            
+        end
+    end
+    
+    % Turn on grid if requested
+    if use_grid_on
+       grid on; 
+    end
+    
     title({labels.title},   'Interpreter', 'latex', 'fontsize', font_size.title);
-    legend(labels.legend, 'Interpreter', 'latex', 'fontsize', font_size.legend, 'location', 'best');
+    legend(labels.legend,   'Interpreter', 'latex', 'fontsize', font_size.legend, 'location', 'best');
     ylabel({labels.ylabel}, 'Interpreter', 'latex', 'fontsize', font_size.ylabel);
     xlabel({labels.xlabel}, 'Interpreter', 'latex', 'fontsize', font_size.xlabel);
     
-
 end
 

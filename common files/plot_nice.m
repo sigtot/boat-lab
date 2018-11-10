@@ -16,14 +16,15 @@ function [fig] = plot_nice(data, labels, font_size)
 %         --- 'xlabel' : String containing the xlabel, in LaTeX syntax
 % 3. font_size: struct
 %            --- 'title' : Size of the 'title' font
-%            --- 'legend' : Size of the 'legend' font
+%            --- 'legend' : Size of the 'legend' font. If only one legend,
+%            pass as string. Otherwise, pass as cell array.
 %            --- 'ylabel' : Size of the 'ylabel' font
 %            --- 'xlabel' : Size of the 'xlabel' font
 %
 % ----------------------------------
 % Output:
 % 
-% 1. fig: Handler to the figure created.
+% 1. fig: Handle to the figure created.
 % ----------------------------------
 %% Code
     
@@ -36,8 +37,12 @@ function [fig] = plot_nice(data, labels, font_size)
         
     end
     
-    title({labels.title}, 'Interpreter', 'latex', 'fontsize', font_size.title);
-    legend({labels.legend}, 'Interpreter', 'latex', 'fontsize', font_size.legend, 'location', 'best');
+    if ~iscell(labels.legend)
+       labels.legend = {labels.legend}; 
+    end
+    
+    title({labels.title},   'Interpreter', 'latex', 'fontsize', font_size.title);
+    legend(labels.legend, 'Interpreter', 'latex', 'fontsize', font_size.legend, 'location', 'best');
     ylabel({labels.ylabel}, 'Interpreter', 'latex', 'fontsize', font_size.ylabel);
     xlabel({labels.xlabel}, 'Interpreter', 'latex', 'fontsize', font_size.xlabel);
     

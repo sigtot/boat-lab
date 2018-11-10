@@ -14,7 +14,7 @@ labels{TASK_A} = new_labels('Estimated power spectral density $S_{\psi_w}$',...
                             'Frequency [rad/s]',...
                             'Power density [power/rad/s]');
                         
-labels{TASK_D} = new_labels('Curve-fitting of $\lambda$ in $P_{\psi_w}$',...
+labels{TASK_D} = new_labels('Curve-fitting of \lambda in $P_{\psi_w}$',...
                             '$S_{\psi_w}$',...
                             'Frequency [rad/s]',...
                             'Power density [power/rad/s]');
@@ -41,6 +41,8 @@ sampling_frequency = 10; % Hz
 omega = f*CONVERT_HZ_TO_RAD_S; % Convert Hz to rad/s
 pxx = pxx/CONVERT_HZ_TO_RAD_S; % Convert power/Hz to power/rad/s
 
+plot(omega, pxx)
+
 %% Task b)
 
 %% Task c)
@@ -66,5 +68,5 @@ for i = 1:length(lambda)
         labels{TASK_D}.legend = append_label(labels{TASK_D}.legend, legend_to_append);
 end
  
-data = structify_data(omega, [pxx, pxx_theoretical]);
-plot_nice(data, labels{TASK_D}, font_size);
+data = structify_data(omega, [pxx; pxx_theoretical]);
+plot_nice(data, labels, font_size);

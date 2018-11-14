@@ -30,5 +30,3 @@ path = 'plots/';
 filename = 'test';
 
 fig = plot_nice(data_array, labels, font_size);
-
-

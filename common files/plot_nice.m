@@ -1,4 +1,4 @@
-function [fig] = plot_nice(data, labels, font_size, varargin)
+function [fig, pl] = plot_nice(data, labels, font_size, varargin)
 %% Function description
 % Makes a nice plot of arbitrary data in LaTeX font and returns a handler
 % to the figure
@@ -22,15 +22,18 @@ function [fig] = plot_nice(data, labels, font_size, varargin)
 %            --- 'xlabel' : Size of the 'xlabel' font
 % 4. varargin: Optional input parameters
 %            --- 'loglog' : Pass in the string 'loglog' for loglog plot
+%            --- 'grid'   : Pass in the strin 'grid' to turn on grids
 %
 % ----------------------------------
 % Output:
 % 
 % 1. fig: Handle to the figure created.
+% 2. pl : Array with handles to all overlapping plots created
 % ----------------------------------
 %% Code
     
     fig = figure;
+    pl = zeros(1, length(data));
     
     % Used to get pretty colors
     colors = linspecer(length(data));
@@ -48,12 +51,11 @@ function [fig] = plot_nice(data, labels, font_size, varargin)
     use_loglog = any(strcmp(varargin, 'loglog'));
     use_grid_on = any(strcmp(varargin, 'grid'));
     
-    
-    % Plotting
+    %% Actual plotting
     if use_loglog
         for i = 1:length(data)
 
-            loglog(data{i}.time, data{i}.values, 'color', colors(i, :));
+            pl(i) = loglog(data{i}.time, data{i}.values, 'color', colors(i, :));
             hold on
 
         end
@@ -61,7 +63,7 @@ function [fig] = plot_nice(data, labels, font_size, varargin)
     else
         for i = 1:length(data)
         
-            plot(data{i}.time, data{i}.values, 'color', colors(i, :));
+            pl(i) = plot(data{i}.time, data{i}.values, 'color', colors(i, :));
             hold on
             
         end

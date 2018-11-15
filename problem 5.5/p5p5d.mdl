@@ -1,12 +1,12 @@
 Model {
-  Name			  "p5p5c"
+  Name			  "p5p5d"
   Version		  9.2
   SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.60"
+    ComputedModelVersion    "1.85"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -17,17 +17,11 @@ Model {
     PreCompExecutionDomainType "Unset"
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 2
+    NumExternalFileReferences 1
     ExternalFileReference {
       Reference		      "simulink/Sources/Band-Limited\nWhite Noise"
-      Path		      "p5p5c/Cargo ship/Measurement noise"
+      Path		      "p5p5d/Cargo ship/Measurement noise"
       SID		      "11"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "simulink/Sinks/XY Graph"
-      Path		      "p5p5c/North-East"
-      SID		      "29"
       Type		      "LIBRARY_BLOCK"
     }
     OrderedModelArguments   1
@@ -56,7 +50,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [-1927.0, 0.0, 974.0, 1047.0]
+      Location		      [-8.0, -8.0, 1936.0, 1056.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -80,9 +74,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[920.0, 866.0]
+	Extents			[1882.0, 875.0]
 	ZoomFactor		[1.25]
-	Offset			[-73.418287903295663, -25.592494385792236]
+	Offset			[-333.554208808237, -159.33333333333294]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -102,7 +96,7 @@ Model {
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
       "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAO+AAADmwAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAeAAAADpAAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
       "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAMr/////wAAAAAAAAAA/"
@@ -116,14 +110,14 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 15 15:42:11 2018"
-  RTWModifiedTimeStamp	  464197328
-  ModelVersionFormat	  "1.%<AutoIncrement:60>"
+  LastModifiedDate	  "Thu Nov 15 20:58:36 2018"
+  RTWModifiedTimeStamp	  464216313
+  ModelVersionFormat	  "1.%<AutoIncrement:85>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
   WideLines		  off
-  ShowLineDimensions	  off
+  ShowLineDimensions	  on
   ShowPortDataTypes	  off
   ShowAllPropagatedSignalLabels	off
   PortDataTypeDisplayFormat "AliasTypeOnly"
@@ -175,11 +169,11 @@ Model {
     $PropName		    "DataLoggingOverride"
     $ObjectID		    7
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
-    model_		    "p5p5c"
+    model_		    "p5p5d"
     Array {
       Type		      "Cell"
       Dimension		      1
-      Cell		      "p5p5c"
+      Cell		      "p5p5d"
       PropName		      "logAsSpecifiedByModels_"
     }
     Array {
@@ -397,7 +391,7 @@ Model {
 	  SaveWithDisabledLinksMsg "warning"
 	  SaveWithParameterizedLinksMsg	"none"
 	  CheckSSInitialOutputMsg on
-	  UnderspecifiedInitializationDetection	"Classic"
+	  UnderspecifiedInitializationDetection	"Simplified"
 	  MergeDetectMultiDrivingBlocksExec "none"
 	  CheckExecutionContextPreStartOutputMsg off
 	  CheckExecutionContextRuntimeOutputMsg	off
@@ -917,7 +911,7 @@ Model {
       }
       Name		      "Configuration"
       ExtraOptions	      ""
-      CurrentDlgPage	      "Solver"
+      CurrentDlgPage	      "Diagnostics/Data Validity"
       ConfigPrmDlgPosition    [ 430, 285, 1490, 915 ]
     }
     PropName		    "ConfigurationSets"
@@ -1081,12 +1075,13 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Mux
-      Inputs		      "4"
-      DisplayOption	      "none"
-      UseBusObject	      off
-      BusObject		      "BusObject"
-      NonVirtualBus	      off
+      BlockType		      Memory
+      InitialCondition	      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      LinearizeAsDelay	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
     }
     Block {
       BlockType		      Outport
@@ -1216,8 +1211,8 @@ Model {
     }
   }
   System {
-    Name		    "p5p5c"
-    Location		    [-1927, 0, -953, 1047]
+    Name		    "p5p5d"
+    Location		    [-8, -8, 1928, 1048]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1234,7 +1229,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "46"
+    SIDHighWatermark	    "62"
     Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
@@ -1267,14 +1262,14 @@ Model {
 	    Type		    "checkbox"
 	    Name		    "current"
 	    Prompt		    "current"
-	    Value		    "off"
+	    Value		    "on"
 	  }
 	  Object {
 	    $ObjectID		    24
 	    Type		    "checkbox"
 	    Name		    "logic"
 	    Prompt		    "waves"
-	    Value		    "off"
+	    Value		    "on"
 	  }
 	  PropName		  "Parameters"
 	}
@@ -1786,11 +1781,30 @@ Model {
       }
     }
     Block {
+      BlockType		      Constant
+      Name		      "Constant1"
+      SID		      "49"
+      Position		      [-75, 162, 50, 218]
+      ZOrder		      61
+      Value		      "psi_reference"
+    }
+    Block {
+      BlockType		      Demux
+      Name		      "Demux"
+      SID		      "52"
+      Ports		      [1, 5]
+      Position		      [350, -7, 355, 137]
+      ZOrder		      64
+      ShowName		      off
+      Outputs		      "5"
+      DisplayOption	      "bar"
+    }
+    Block {
       BlockType		      SubSystem
       Name		      "MATLAB Function"
       SID		      "45"
-      Ports		      [3, 1]
-      Position		      [225, 95, 295, 145]
+      Ports		      [2, 1]
+      Position		      [185, 16, 310, 109]
       ZOrder		      57
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1816,7 +1830,7 @@ Model {
 	TiledPageScale		1
 	ShowPageBoundaries	off
 	ZoomFactor		"100"
-	SIDHighWatermark	"25"
+	SIDHighWatermark	"28"
 	Block {
 	  BlockType		  Inport
 	  Name			  "y"
@@ -1835,15 +1849,6 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Block {
-	  BlockType		  Inport
-	  Name			  "sys_init"
-	  SID			  "45::25"
-	  Position		  [20, 171, 40, 189]
-	  ZOrder		  16
-	  Port			  "3"
-	  IconDisplay		  "Port number"
-	}
-	Block {
 	  BlockType		  Demux
 	  Name			  " Demux "
 	  SID			  "45::20"
@@ -1856,14 +1861,15 @@ Model {
 	  BlockType		  S-Function
 	  Name			  " SFunction "
 	  SID			  "45::19"
-	  Tag			  "Stateflow S-Function p5p5c 2"
-	  Ports			  [3, 2]
-	  Position		  [180, 105, 230, 185]
+	  Tag			  "Stateflow S-Function p5p5d 2"
+	  Ports			  [2, 2]
+	  Position		  [180, 105, 230, 165]
 	  ZOrder		  10
 	  FunctionName		  "sf_sfun"
-	  PortCounts		  "[3 2]"
+	  Parameters		  "sys_init"
+	  PortCounts		  "[2 2]"
 	  SFunctionDeploymentMode off
-	  EnableBusSupport	  off
+	  EnableBusSupport	  on
 	  SFcnIsStateOwnerBlock	  off
 	  Port {
 	    PortNumber		    2
@@ -1886,29 +1892,22 @@ Model {
 	  IconDisplay		  "Port number"
 	}
 	Line {
-	  ZOrder		  56
+	  ZOrder		  105
 	  SrcBlock		  "y"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  57
+	  ZOrder		  106
 	  SrcBlock		  "u"
 	  SrcPort		  1
 	  DstBlock		  " SFunction "
 	  DstPort		  2
 	}
 	Line {
-	  ZOrder		  58
-	  SrcBlock		  "sys_init"
-	  SrcPort		  1
-	  DstBlock		  " SFunction "
-	  DstPort		  3
-	}
-	Line {
 	  Name			  "x_est"
-	  ZOrder		  59
+	  ZOrder		  107
 	  Labels		  [0, 0]
 	  SrcBlock		  " SFunction "
 	  SrcPort		  2
@@ -1916,14 +1915,14 @@ Model {
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  60
+	  ZOrder		  108
 	  SrcBlock		  " Demux "
 	  SrcPort		  1
 	  DstBlock		  " Terminator "
 	  DstPort		  1
 	}
 	Line {
-	  ZOrder		  61
+	  ZOrder		  109
 	  SrcBlock		  " SFunction "
 	  SrcPort		  1
 	  DstBlock		  " Demux "
@@ -1932,34 +1931,28 @@ Model {
       }
     }
     Block {
-      BlockType		      Mux
-      Name		      "Mux"
-      SID		      "36"
-      Ports		      [2, 1]
-      Position		      [715, 321, 720, 359]
-      ZOrder		      49
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
+      BlockType		      Memory
+      Name		      "Memory"
+      SID		      "56"
+      Position		      [550, -65, 580, -35]
+      ZOrder		      68
+      BlockMirror	      on
     }
     Block {
-      BlockType		      Reference
-      Name		      "North-East"
-      SID		      "29"
-      Ports		      [2]
-      Position		      [830, 174, 865, 241]
-      ZOrder		      -2
-      LibraryVersion	      "1.444"
-      SourceBlock	      "simulink/Sinks/XY Graph"
-      SourceType	      "XY scope."
-      SourceProductName	      "Simulink"
-      SourceProductBaseCode   "SL"
-      ContentPreviewEnabled   off
-      xmin		      "-5000"
-      xmax		      "5000"
-      ymin		      "-5000"
-      ymax		      "5000"
-      st		      "-1"
+      BlockType		      Memory
+      Name		      "Memory1"
+      SID		      "57"
+      Position		      [470, 395, 500, 425]
+      ZOrder		      69
+      BlockMirror	      on
+    }
+    Block {
+      BlockType		      Memory
+      Name		      "Memory2"
+      SID		      "58"
+      Position		      [365, -40, 395, -10]
+      ZOrder		      70
+      BlockMirror	      on
     }
     Block {
       BlockType		      Scope
@@ -1991,18 +1984,32 @@ Model {
       Floating		      off
     }
     Block {
-      BlockType		      ToWorkspace
-      Name		      "To Workspace"
-      SID		      "35"
-      Ports		      [1]
-      Position		      [775, 322, 875, 358]
-      ZOrder		      48
-      VariableName	      "coordinates"
-      MaxDataPoints	      "inf"
-      SaveFormat	      "Structure With Time"
-      Save2DSignal	      "3-D array (concatenate along third dimension)"
-      FixptAsFi		      on
-      SampleTime	      "-1"
+      BlockType		      Sum
+      Name		      "Sum"
+      SID		      "50"
+      Ports		      [2, 1]
+      Position		      [110, 180, 130, 200]
+      ZOrder		      62
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "|+-"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Sum1"
+      SID		      "51"
+      Ports		      [2, 1]
+      Position		      [360, 180, 380, 200]
+      ZOrder		      63
+      ShowName		      off
+      IconShape		      "round"
+      Inputs		      "++|"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
     }
     Block {
       BlockType		      ToWorkspace
@@ -2011,7 +2018,7 @@ Model {
       Ports		      [1]
       Position		      [775, 392, 875, 428]
       ZOrder		      50
-      VariableName	      "measurement_noise"
+      VariableName	      "compass"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
       Save2DSignal	      "3-D array (concatenate along third dimension)"
@@ -2021,45 +2028,11 @@ Model {
     Block {
       BlockType		      TransferFcn
       Name		      "Transfer Fcn"
-      SID		      "46"
-      Position		      [50, 159, 150, 221]
-      ZOrder		      58
-      Numerator		      "[K/T]"
-      Denominator	      "[1 1/T 0]"
-    }
-    Line {
-      ZOrder		      1
-      SrcBlock		      "Cargo ship"
-      SrcPort		      3
-      Points		      [27, 0]
-      Branch {
-	ZOrder			32
-	Points			[0, 125]
-	DstBlock		"Mux"
-	DstPort			2
-      }
-      Branch {
-	ZOrder			9
-	DstBlock		"North-East"
-	DstPort			2
-      }
-    }
-    Line {
-      ZOrder		      2
-      SrcBlock		      "Cargo ship"
-      SrcPort		      2
-      Points		      [8, 0]
-      Branch {
-	ZOrder			34
-	Points			[0, 140]
-	DstBlock		"Mux"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			11
-	DstBlock		"North-East"
-	DstPort			1
-      }
+      SID		      "60"
+      Position		      [220, 172, 280, 208]
+      ZOrder		      72
+      Numerator		      "K_pd*[T_d 1]"
+      Denominator	      "[T_f 1]"
     }
     Line {
       ZOrder		      3
@@ -2067,10 +2040,24 @@ Model {
       SrcPort		      1
       Points		      [71, 0]
       Branch {
+	ZOrder			88
+	Points			[0, -205]
+	DstBlock		"Memory"
+	DstPort			1
+      }
+      Branch {
 	ZOrder			30
 	Points			[0, 255]
-	DstBlock		"To Workspace1"
-	DstPort			1
+	Branch {
+	  ZOrder		  76
+	  DstBlock		  "Memory1"
+	  DstPort		  1
+	}
+	Branch {
+	  ZOrder		  75
+	  DstBlock		  "To Workspace1"
+	  DstPort		  1
+	}
       }
       Branch {
 	ZOrder			16
@@ -2079,10 +2066,80 @@ Model {
       }
     }
     Line {
-      ZOrder		      8
-      SrcBlock		      "Mux"
+      ZOrder		      73
+      SrcBlock		      "Constant1"
       SrcPort		      1
-      DstBlock		      "To Workspace"
+      DstBlock		      "Sum"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      81
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      Points		      [31, 0]
+      Branch {
+	ZOrder			86
+	Points			[0, -215]
+	DstBlock		"Memory2"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			85
+	DstBlock		"Cargo ship"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      83
+      SrcBlock		      "MATLAB Function"
+      SrcPort		      1
+      DstBlock		      "Demux"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      84
+      SrcBlock		      "Demux"
+      SrcPort		      5
+      Points		      [10, 0]
+      DstBlock		      "Sum1"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      91
+      SrcBlock		      "Memory"
+      SrcPort		      1
+      Points		      [-442, 0; 0, 90]
+      DstBlock		      "MATLAB Function"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      92
+      SrcBlock		      "Memory1"
+      SrcPort		      1
+      Points		      [-345, 0]
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      93
+      SrcBlock		      "Memory2"
+      SrcPort		      1
+      Points		      [-219, 0; 0, 110]
+      DstBlock		      "MATLAB Function"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      96
+      SrcBlock		      "Transfer Fcn"
+      SrcPort		      1
+      DstBlock		      "Sum1"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      97
+      SrcBlock		      "Sum"
+      SrcPort		      1
+      DstBlock		      "Transfer Fcn"
       DstPort		      1
     }
   }
@@ -2095,7 +2152,7 @@ Model {
 Stateflow {
   machine {
     id			    1
-    name		    "p5p5c"
+    name		    "p5p5d"
     created		    "14-Nov-2018 18:07:22"
     isLibrary		    0
     sfVersion		    80000014
@@ -2113,7 +2170,7 @@ Stateflow {
     visible		    1
     subviewS {
     }
-    ssIdHighWaterMark	    9
+    ssIdHighWaterMark	    11
     decomposition	    CLUSTER_CHART
     type		    EML_CHART
     chartFileNumber	    2
@@ -2140,12 +2197,14 @@ Stateflow {
     eml {
       isEML		      1
       script		      "function x_est = kalman(y, u, sys_init)\n    %% Declaring persistent variables    \n    \n    per"
-      "sistent x_est_ A B C E H Q R P_ init\n    \n    %% Initialisation\n    if isempty(init)\n       init = 1;\n     "
-      "  [A, B, C, E, H, P_, x_est_, Q, R] = distribute(sys_init);\n    end\n    \n    %% Update y_est_\n    \n    y_es"
-      "t_ = C*x_est_;\n    \n    %% Calculate Kalman gain\n    \n    K = P_*C'*(C*P_*C' + H*R*H')^-1;\n    \n    %% Fin"
-      "d a posteriori x_est\n    \n    x_est = x_est_ + K*(y - y_est_);\n    \n    %% Update covariance matrix P_\n\n  "
-      "  P = P_ - K*C*P_ - P_*C'*K' + K*(C*P_*C' + H*R*H')*K';\n    \n    P_ = A*P*A' + E*Q*G';\n    \n    %% Update x_"
-      "est_\n    \n    x_est_ = A*x_est + B*u;\nend"
+      "sistent x_est_ A B C E H Q R P_ init\n    \n    %% Initialisation\n    if isempty(init)\n       init    = 1;\n  "
+      "      A      = sys_init.A_d;\n        B      = sys_init.B_d;\n        C      = sys_init.C_d;\n        E      = s"
+      "ys_init.E_d;\n        H      = sys_init.H_d;\n        P_     = sys_init.P_0_;\n        x_est_ = sys_init.x_est_0"
+      "_;\n        Q      = sys_init.Q;\n        R      = sys_init.R;\n        \n    end\n    \n    %% Update y_est_\n "
+      "   \n    y_est_ = C*x_est_;\n    \n    %% Calculate Kalman gain\n    \n    K = P_*C'*(C*P_*C' + H*R*H')^-1;\n   "
+      " \n    %% Find a posteriori x_est\n    \n    x_est = x_est_ + K*(y - y_est_);\n    \n    %% Update covariance ma"
+      "trix P_\n\n    P = P_ - K*C*P_ - P_*C'*K' + K*(C*P_*C' + H*R*H')*K';\n    \n    P_ = A*P*A' + E*Q*E';\n    \n   "
+      " %% Update x_est_\n    \n    x_est_ = A*x_est + B*u;\nend"
       editorLayout	      "100 M4x1[10 5 700 500]"
     }
   }
@@ -2221,17 +2280,18 @@ Stateflow {
   }
   data {
     id			    7
-    ssIdNumber		    9
+    ssIdNumber		    11
     name		    "sys_init"
-    scope		    INPUT_DATA
+    scope		    PARAMETER_DATA
     machine		    1
     props {
       array {
 	size			"-1"
       }
       type {
-	method			SF_INHERITED_TYPE
+	method			SF_SIMULINK_OBJECT_TYPE
 	primitive		SF_DOUBLE_TYPE
+	busObject		"slBus1"
 	isSigned		1
 	wordLength		"16"
       }
@@ -2241,7 +2301,7 @@ Stateflow {
 	name			"inherit"
       }
     }
-    dataType		    "Inherit: Same as Simulink"
+    dataType		    "Bus: slBus1"
     linkNode		    [2 6 0]
   }
   junction {

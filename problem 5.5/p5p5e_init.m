@@ -52,15 +52,9 @@ C_d        = C;
 
 %% Task b)
 
-sim('p5p5b.mdl');
+measurement_noise_variance = 0.0020; % Hardcoded to save time and resources
 
-measurement_noise = struct(...
-    'time', measurement_noise.time,...
-    'values', measurement_noise.signals.values);
-
-measurement_noise_variance = var(measurement_noise.values); % Degrees
-
-%% Task c)
+%% Set up for Kalman filter
 
 Q = [30,    0;...
       0, 1E-6];
@@ -89,42 +83,23 @@ sys_init = struct(...
     'R', R);
 
 Simulink.Bus.createObject(sys_init);
-%% Task d)
+
+%% Task
 
 psi_reference = 30; % Degrees
 
-sim('p5p5d.mdl');
+sim('p5p5e.mdl');
 
-heading = new_data(compass);
+[heading, rudder, bias_est] = new_data(compass, rudder, bias_est);
 
 labels = new_labels(...
-    'Heading with Kalman',...
-    '$\psi$',...
+    'Heading with Kalman filter',...
+    {'$\psi$', '$\delta$', '$\hat{b}$'},...
     'Time [s]',...
     'Degrees [$^{\circ}$]');
 
-plot_nice(heading, labels, font_size);
+[fig1, pl] = plot_nice({heading, rudder, bias_est}, labels, font_size, 'grid');
+set_plot_parameters(pl, 'LineWidth', 3);
 
-%%
-% heading_reference = 30; % Degrees
-% 
-% sim('p5p3b.mdl')
-% 
-% heading = new_data(heading.time, heading.signals.values);
-% reference = new_data(reference.time, reference.signals.values);
-% rudder = new_data(rudder.time, rudder.signals.values);
-% title_field = strcat('Heading response to $\psi_r=30^{\circ}$, no disturbances. $K_{pd} = ', num2str(K_pd), '$');
-% 
-% labels = new_labels(title_field,...
-%                     {'$\psi_{ship}$', '$\delta$'},...
-%                     'Time [s]',...
-%                     'Heading [$\circ$]');
-% 
-% % labels = append_legend(labels, '$\psi_r$');
-% 
-% fig3 = plot_nice({heading, rudder}, labels, font_size, 'grid');
-% 
-% filename = strcat('Heading response no disturbances p5p3b K_pd ', strrep(num2str(K_pd), '.', '_dot_'));
-% 
-% plot2pdf(PLOT_PATH, filename, fig3);
-% 
+filename = 'heading_with_kalman_p5p5d';
+

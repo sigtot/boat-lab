@@ -52,15 +52,6 @@ phase = squeeze(phase);
 
 [Gm, Pm, Wcg, Wcp] = margin(H_open_loop);
 
-% bode_data = cell(1, 2);
-% 
-% bode_data{1} = new_data(wout, mag);
-% 
-% bode_data{2} = new_data(wout, phase);
-% 
-% fig1 = plot_nice(bode_data{1}, labels_task_a{1}, font_size, 'loglog');
-%fig2 = plot_nice(bode_data{2}, labels_task_a{2}, font_size, 'loglog');
-
 %% Task c)
 
 heading_reference = 30; % Degrees

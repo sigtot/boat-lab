@@ -1,11 +1,11 @@
 function [fig, pl] = plot_nice(data, labels, font_size, varargin)
 %% Function description
 % Makes a nice plot of arbitrary data in LaTeX font and returns a handler
-% to the figure
+% to the figure and the plots in the figure
 % -----------------------------------
 % Input:
 %
-% 1. data: cell array
+% 1. data: cell array (if only one then also struct)
 %       --- struct
 %           --- 'time' : time array corresponding to 'values'
 %           --- 'values' : value array corresponding to 'time'
@@ -23,6 +23,8 @@ function [fig, pl] = plot_nice(data, labels, font_size, varargin)
 % 4. varargin: Optional input parameters
 %            --- 'loglog' : Pass in the string 'loglog' for loglog plot
 %            --- 'grid'   : Pass in the strin 'grid' to turn on grids
+%            --- 'thicklines' : Turns linewidth to 3
+%            --- 'disablefigure': Disable creating new figure
 %
 % ----------------------------------
 % Output:
@@ -32,7 +34,12 @@ function [fig, pl] = plot_nice(data, labels, font_size, varargin)
 % ----------------------------------
 %% Code
     
-    fig = figure;
+    disable_figure = any(strcmpi(varargin, 'disablefigure'));
+    
+    if ~disable_figure
+        fig = figure;
+    end
+    
     pl = zeros(1, length(data));
     
     % Used to get pretty colors
@@ -48,8 +55,9 @@ function [fig, pl] = plot_nice(data, labels, font_size, varargin)
     end
     
     % Check for optional input parameters
-    use_loglog = any(strcmp(varargin, 'loglog'));
-    use_grid_on = any(strcmp(varargin, 'grid'));
+    use_loglog = any(strcmpi(varargin, 'loglog'));
+    use_grid_on = any(strcmpi(varargin, 'grid'));
+    use_thick_lines = any(strcmpi(varargin, 'thicklines'));
     
     %% Actual plotting
     if use_loglog
@@ -76,8 +84,27 @@ function [fig, pl] = plot_nice(data, labels, font_size, varargin)
     
     title({labels.title},   'Interpreter', 'latex', 'fontsize', font_size.title);
     legend(labels.legend,   'Interpreter', 'latex', 'fontsize', font_size.legend, 'location', 'best');
-    ylabel({labels.ylabel}, 'Interpreter', 'latex', 'fontsize', font_size.ylabel);
-    xlabel({labels.xlabel}, 'Interpreter', 'latex', 'fontsize', font_size.xlabel);
+    ylabel({labels.ylabel}, 'Interpreter', 'latex');
+    xlabel({labels.xlabel}, 'Interpreter', 'latex');
+    
+    % Set font size for axis
+    
+    xl = get(gca,'XLabel');
+    xlFontSize = get(xl,'FontSize');
+    xAX = get(gca,'XAxis');
+    set(xAX,'FontSize', font_size.ticklabel)
+    set(xl, 'FontSize', font_size.xlabel);
+    
+    yl = get(gca,'YLabel');
+    ylFontSize = get(yl,'FontSize');
+    yAX = get(gca,'YAxis');
+    set(yAX,'FontSize', font_size.ticklabel)
+    set(yl, 'FontSize', font_size.ylabel);
+    set(gca, 'TickLabelInterpreter', 'latex');
+    
+    if use_thick_lines
+        set(pl, 'LineWidth', 3);
+    end
     
 end
 

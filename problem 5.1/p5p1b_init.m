@@ -4,29 +4,22 @@ close all
 omega = 0.005; % rad/s
 amplitude = 1; % 1
 
+PLOT_PATH = 'plots/';
 
 sim('p5p1b.mdl');
 
-coordinates = struct(...
-            'time', coordinates_output.time',...
-            'x', coordinates_output.signals.values(:,1)',...
-            'y', coordinates_output.signals.values(:,2)');
- 
-heading = struct(...
-            'time', compass_output.time',...
-            'values', compass_output.signals.values');
-        
-input_struct = struct(...
-            'time', input.time',...
-            'values', input.signals.values');
+data = new_data(heading, rudder);
 
-labels = new_labels('Just a test', 'Test legend', 'Ylabel test', 'Xlabel test');
+labels = new_labels(...
+    strcat('Sinusodial response, $\omega=$ ', num2str(omega), ' rad'),...
+    {'$\psi$', '$\delta$'},...
+    'Time [s]',...
+    'Degrees [$^{\circ}$]');
 
 font_size = new_font_size();
 
-data_array = {heading, input_struct};
-
 path = 'plots/';
-filename = 'test';
+filename = strcat('p5p1b_sinusodial_response_omega_', strrep(num2str(omega), '.', '_dot_'));
 
-fig = plot_nice(data_array, labels, font_size);
+[fig, pl] = plot_nice(data, labels, font_size, 'thicklines');
+grid on

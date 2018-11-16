@@ -20,7 +20,11 @@ labels{TASK_D} = new_labels('Curve-fitting of $\lambda$ in $P_{\psi_w}$',...
                             'Power density [power/rad/s]');
                         
 font_size = new_font_size();
-                 
+
+
+filename_task_a = 'p5p2a_numeric_psd';
+filename_task_d = 'p5p2d_curvefitting_lambda';
+PLOT_PATH = 'plots/';
                         
 %% Task a)
 
@@ -40,6 +44,10 @@ sampling_frequency = 10; % Hz
 
 omega = f*CONVERT_HZ_TO_RAD_S; % Convert Hz to rad/s
 pxx = pxx/CONVERT_HZ_TO_RAD_S; % Convert power/Hz to power/rad/s
+
+pxx_struct = new_data(omega, pxx);
+
+%[fig1, pl1] = plot_nice(pxx_struct, labels{TASK_A}, font_size, 'grid', 'thicklines');
 
 %% Task b)
 
@@ -62,9 +70,9 @@ labels{TASK_D}.legend = {labels{TASK_D}.legend};
 for i = 1:length(lambda)
         pxx_theoretical = (omega*K_w).^2./...
               (omega.^4 + omega_0^4 + 2*omega_0.^2*omega.^2*(2*lambda.^2-1));
-        legend_to_append = strcat('$\lambda = ', num2str(lambda(i)), '$');
+        legend_to_append = strcat('$\lambda_{',num2str(i),'} = ', num2str(lambda(i)), '$');
         labels{TASK_D} = append_legend(labels{TASK_D}, legend_to_append);
 end
  
 data = structify_data(omega, [pxx, pxx_theoretical]);
-fig = plot_nice(data, labels{TASK_D}, font_size);
+[fig2, pl2] = plot_nice(data, labels{TASK_D}, font_size, 'grid');

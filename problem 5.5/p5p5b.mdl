@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.54"
+    ComputedModelVersion    "1.56"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -17,17 +17,11 @@ Model {
     PreCompExecutionDomainType "Unset"
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 2
+    NumExternalFileReferences 1
     ExternalFileReference {
       Reference		      "simulink/Sources/Band-Limited\nWhite Noise"
       Path		      "p5p5b/Cargo ship/Measurement noise"
       SID		      "11"
-      Type		      "LIBRARY_BLOCK"
-    }
-    ExternalFileReference {
-      Reference		      "simulink/Sinks/XY Graph"
-      Path		      "p5p5b/North-East"
-      SID		      "29"
       Type		      "LIBRARY_BLOCK"
     }
     OrderedModelArguments   1
@@ -82,7 +76,7 @@ Model {
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
 	ZoomFactor		[2.0]
-	Offset			[99.2959346689388, 87.628614222250931]
+	Offset			[127.2959346689388, 45.424058401435829]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -116,9 +110,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 14 17:32:06 2018"
-  RTWModifiedTimeStamp	  464117463
-  ModelVersionFormat	  "1.%<AutoIncrement:54>"
+  LastModifiedDate	  "Fri Nov 16 13:19:16 2018"
+  RTWModifiedTimeStamp	  464275154
+  ModelVersionFormat	  "1.%<AutoIncrement:56>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1075,14 +1069,6 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Mux
-      Inputs		      "4"
-      DisplayOption	      "none"
-      UseBusObject	      off
-      BusObject		      "BusObject"
-      NonVirtualBus	      off
-    }
-    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -1126,10 +1112,6 @@ Model {
       OutDataTypeStr	      "Inherit: Same as input"
       LockScale		      off
       RndMeth		      "Floor"
-    }
-    Block {
-      BlockType		      Scope
-      DefaultConfigurationName "Simulink.scopes.TimeScopeBlockCfg"
     }
     Block {
       BlockType		      SubSystem
@@ -1772,89 +1754,16 @@ Model {
       BlockType		      Constant
       Name		      "Constant"
       SID		      "44"
-      Position		      [195, 175, 225, 205]
+      Position		      [325, 175, 355, 205]
       ZOrder		      56
       Value		      "0"
-    }
-    Block {
-      BlockType		      Mux
-      Name		      "Mux"
-      SID		      "36"
-      Ports		      [2, 1]
-      Position		      [715, 321, 720, 359]
-      ZOrder		      49
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "North-East"
-      SID		      "29"
-      Ports		      [2]
-      Position		      [830, 174, 865, 241]
-      ZOrder		      -2
-      LibraryVersion	      "1.444"
-      SourceBlock	      "simulink/Sinks/XY Graph"
-      SourceType	      "XY scope."
-      SourceProductName	      "Simulink"
-      SourceProductBaseCode   "SL"
-      ContentPreviewEnabled   off
-      xmin		      "-5000"
-      xmax		      "5000"
-      ymin		      "-5000"
-      ymax		      "5000"
-      st		      "-1"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "30"
-      Ports		      [1]
-      Position		      [775, 139, 805, 171]
-      ZOrder		      -3
-      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
-      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingSaveFormat','StructureWithTime','DataLoggingDecimation','1','DataLoggin"
-      "gDecimateData',true),extmgr.Configuration('Visuals','Time Domain',true,'SerializedDisplays',{struct('MinYLimReal"
-      "','29.82371','MaxYLimReal','30.18029','YLabelReal','','MinYLimMag','29.82371','MaxYLimMag','30.18029','LegendVis"
-      "ibility','Off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.68627450980"
-      "3922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764"
-      "706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823"
-      "529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>',"
-      "'LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Cargo ship/1'}},'ShowConte"
-      "nt',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','29.82371','MaxYLimReal','30.18029','YLa"
-      "belReal','','MinYLimMag','29.82371','MaxYLimMag','30.18029','LegendVisibility','Off','XGrid',true,'YGrid',true,'"
-      "PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],"
-      "'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549"
-      ";0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647"
-      " 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedCha"
-      "nnelNames',{{}},'NumLines',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools',"
-      "'Plot Navigation',true,'OnceAtStop',false,'PreviousZoomMode','ZoomOut'),extmgr.Configuration('Tools','Measuremen"
-      "ts',true,'Version','2017a')),'Version','2017a','Location',[165 288 1579 767])"
-      NumInputPorts	      "1"
-      Floating		      off
-    }
-    Block {
-      BlockType		      ToWorkspace
-      Name		      "To Workspace"
-      SID		      "35"
-      Ports		      [1]
-      Position		      [775, 322, 875, 358]
-      ZOrder		      48
-      VariableName	      "coordinates"
-      MaxDataPoints	      "inf"
-      SaveFormat	      "Structure With Time"
-      Save2DSignal	      "3-D array (concatenate along third dimension)"
-      FixptAsFi		      on
-      SampleTime	      "-1"
     }
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace1"
       SID		      "37"
       Ports		      [1]
-      Position		      [775, 392, 875, 428]
+      Position		      [660, 137, 760, 173]
       ZOrder		      50
       VariableName	      "measurement_noise"
       MaxDataPoints	      "inf"
@@ -1864,61 +1773,10 @@ Model {
       SampleTime	      "-1"
     }
     Line {
-      ZOrder		      1
-      SrcBlock		      "Cargo ship"
-      SrcPort		      3
-      Points		      [27, 0]
-      Branch {
-	ZOrder			32
-	Points			[0, 125]
-	DstBlock		"Mux"
-	DstPort			2
-      }
-      Branch {
-	ZOrder			9
-	DstBlock		"North-East"
-	DstPort			2
-      }
-    }
-    Line {
-      ZOrder		      2
-      SrcBlock		      "Cargo ship"
-      SrcPort		      2
-      Points		      [8, 0]
-      Branch {
-	ZOrder			34
-	Points			[0, 140]
-	DstBlock		"Mux"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			11
-	DstBlock		"North-East"
-	DstPort			1
-      }
-    }
-    Line {
       ZOrder		      3
       SrcBlock		      "Cargo ship"
       SrcPort		      1
-      Points		      [71, 0]
-      Branch {
-	ZOrder			30
-	Points			[0, 255]
-	DstBlock		"To Workspace1"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			16
-	DstBlock		"Scope"
-	DstPort			1
-      }
-    }
-    Line {
-      ZOrder		      8
-      SrcBlock		      "Mux"
-      SrcPort		      1
-      DstBlock		      "To Workspace"
+      DstBlock		      "To Workspace1"
       DstPort		      1
     }
     Line {

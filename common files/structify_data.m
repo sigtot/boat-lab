@@ -1,13 +1,17 @@
-function values_cell_array = structify_data(time,values_array)
+function structified_data = structify_data(time,values_array)
 
     [~, num_of_rows] = size(values_array);
-
-    values_cell_array = cell(1, num_of_rows);
+    
+    structified_data = cell(1, num_of_rows);
     
     for i = 1:num_of_rows
        
-        values_cell_array{i} = new_data(time, values_array(:, i));
+        structified_data{i} = new_data(time, values_array(:, i));
         
+    end
+    
+    if num_of_rows == 1
+        structified_data = structified_data{1};
     end
 
 end

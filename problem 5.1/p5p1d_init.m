@@ -6,24 +6,12 @@ close all
 amplitude = 1; % 1 degrees
 
 
-
 sim('p5p1d.mdl');
 
-coordinates = struct(...
-            'time', coordinates_output.time',...
-            'x', coordinates_output.signals.values(:,1)',...
-            'y', coordinates_output.signals.values(:,2)');
- 
-heading = struct(...
-            'time', compass_output.time',...
-            'angle', compass_output.signals.values');
-        
-input_struct = struct(...
-            'time', input.time',...
-            'heading', input.signals.values');
+[heading, rudder] = new_data(heading, rudder);
 
 
-%% Calculate theoratical output from transfer function
+%% Calculate theoretical output from transfer function
 
 K = 0.1553;  % 1/s. Calculated from task c)
 T = 71.3716; % s.   Calculated from task c)
@@ -34,10 +22,23 @@ H = (K/T)/(s*(s + 1/T));
 
 T_final = heading.time(end);
 
-step(H, T_final);
+[y, t] = step(H, T_final);
+
+heading_model = structify_data(t, y);
 
 %% Plot response 
-hold on
-plot(heading.time, heading.angle)
 
-legend('Heading', 'Output without DC offset');
+font_sizes = new_font_size();
+
+labels = new_labels(...
+    'Simulated step response vs theoretical',...
+    {'$\psi_{ship}$', '$\psi_{model}$'},...
+    'Time [s]',...
+    'Degrees [$^{\circ}$]');
+
+[fig, pl] = plot_nice({heading, heading_model}, labels, font_sizes, 'grid', 'thicklines');
+
+PLOT_PATH = 'plots/';
+filename = 'p5p1d_sim_vs_model_step_response';
+
+

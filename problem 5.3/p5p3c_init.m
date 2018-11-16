@@ -43,35 +43,24 @@ K_pd = 0.707; % Phase margin 50 degrees
 H_ship = (K/T)/(s*(s + 1/T));
 H_pd = K_pd*(1 + T_d*s)/(1 + T_f*s);
 
-H_open_loop = H_pd*H_ship;
-
-[mag, phase, wout] = bode(H_open_loop);
-
-mag = squeeze(mag);
-phase = squeeze(phase);
-
-[Gm, Pm, Wcg, Wcp] = margin(H_open_loop);
-
 %% Task c)
 
 heading_reference = 30; % Degrees
 
 sim('p5p3c.mdl')
 
-heading = new_data(heading.time, heading.signals.values);
-reference = new_data(reference.time, reference.signals.values);
-rudder = new_data(rudder.time, rudder.signals.values);
+data = new_data(heading, reference, rudder);
 
-title_field = strcat('Heading response to $\psi_r=30^{\circ}$, current disturbances. $K_{pd} = ', num2str(K_pd), '$');
+title_field = strcat('Heading response to $\psi_r=30^{\circ}$ with current disturbances. $K_{pd} = ', num2str(K_pd), '$');
 
 labels = new_labels(title_field,...
                     {'$\psi_{ship}$', '$\psi_r$', '$\delta$'},...
                     'Time [s]',...
-                    'Heading [$\circ$]');
+                    'Angle [$\circ$]');
 
-fig3 = plot_nice({heading, reference, rudder}, labels, font_size, 'grid');
+fig4 = plot_nice(data, labels, font_size, 'grid', 'thicklines');
 
 filename_p5p3c = strcat(...
-    'Heading response current disturbance delta saturation 45 degrees p5p3c K_pd ',...
+    'p5p3c_heading_response_current_disturbance_K_pd_',...
     strrep(num2str(K_pd),'.','_dot_'));
 

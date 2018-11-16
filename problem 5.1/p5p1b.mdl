@@ -1,12 +1,12 @@
 Model {
   Name			  "p5p1b"
   Version		  9.2
-  SavedCharacterEncoding  "UTF-8"
+  SavedCharacterEncoding  "windows-1252"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.41"
+    ComputedModelVersion    "1.45"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -17,25 +17,19 @@ Model {
     PreCompExecutionDomainType "Unset"
     IsExportFunctionModel   0
     NumParameterArguments   0
-    NumExternalFileReferences 2
+    NumExternalFileReferences 1
     ExternalFileReference {
       Reference		      "simulink/Sources/Band-Limited\nWhite Noise"
       Path		      "p5p1b/Cargo ship/Measurement noise"
       SID		      "11"
       Type		      "LIBRARY_BLOCK"
     }
-    ExternalFileReference {
-      Reference		      "simulink/Sinks/XY Graph"
-      Path		      "p5p1b/North-East"
-      SID		      "29"
-      Type		      "LIBRARY_BLOCK"
-    }
     OrderedModelArguments   1
   }
   DiagnosticSuppressor	  "on"
   WebScopes_FoundationPlugin "on"
-  LogicAnalyzerPlugin	  "on"
   NotesPlugin		  "on"
+  LogicAnalyzerPlugin	  "on"
   SLCCPlugin		  "on"
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -46,7 +40,7 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
+  LastSavedArchitecture	  "win64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -56,7 +50,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [92.0, 151.0, 1302.0, 621.0]
+      Location		      [-1680.0, 121.0, 1302.0, 621.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -80,9 +74,9 @@ Model {
 	IsActive		[1]
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
-	Extents			[1264.0, 439.0]
-	ZoomFactor		[1.25]
-	Offset			[-36.624722259414355, 109.00000000000006]
+	Extents			[1248.0, 440.0]
+	ZoomFactor		[1.75]
+	Offset			[110.94939317346338, 172.47470368718567]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -100,13 +94,13 @@ Model {
       }
       WindowState	      "AAAA/wAAAAD9AAAAAgAAAAAAAAC9AAAB+PwCAAAAA/sAAAAWAEQAbwBjAGsAVwBpAGQAZwBlAHQAMwEAAAAxAAAB+AAAA"
       "AAAAAAA+wAAABYARABvAGMAawBXAGkAZABnAGUAdAA0AAAAAAD/////AAAAAAAAAAD7AAAAUgBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0Ac"
-      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABiAP///wAAAAEAAAAAAAAAAPwCA"
+      "ABvAG4AZQBuAHQALwBHAEwAVQBFADIAIAB0AHIAZQBlACAAYwBvAG0AcABvAG4AZQBuAHQAAAAAAP////8AAABjAP///wAAAAEAAAAAAAAAAPwCA"
       "AAAAfsAAABUAEcATABVAEUAMgA6AFAAcgBvAHAAZQByAHQAeQBJAG4AcwBwAGUAYwB0AG8AcgAvAFAAcgBvAHAAZQByAHQAeQAgAEkAbgBzAHAAZ"
-      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAUWAAAB9gAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
+      "QBjAHQAbwByAAAAAAD/////AAAAOQD///8AAAUGAAAB8QAAAAEAAAACAAAAAQAAAAL8AAAAAQAAAAIAAAAP/////wAAAAAA/////wAAAAAAAAAA/"
       "////wEAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/"
-      "////wEAAACA/////wAAAAAAAAAA/////wEAAADo/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFo/////wAAAAAAAAAA/"
-      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAOH/////wAAAAAAAAAA/"
-      "////wEAAAO5/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
+      "////wEAAAB5/////wAAAAAAAAAA/////wEAAADa/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAFT/////wAAAAAAAAAA/"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA/////wEAAAMr/////wAAAAAAAAAA/"
+      "////wAAAAAA/////wAAAAAAAAAA/////wAAAAAA/////wAAAAAAAAAA"
     }
   }
   HideAutomaticNames	  on
@@ -114,11 +108,11 @@ Model {
   Creator		  "markh"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "odin"
+  LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 06 22:50:33 2018"
-  RTWModifiedTimeStamp	  463403563
-  ModelVersionFormat	  "1.%<AutoIncrement:41>"
+  LastModifiedDate	  "Fri Nov 16 09:46:08 2018"
+  RTWModifiedTimeStamp	  464262367
+  ModelVersionFormat	  "1.%<AutoIncrement:45>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1075,14 +1069,6 @@ Model {
       ContinuousStateAttributes	"''"
     }
     Block {
-      BlockType		      Mux
-      Inputs		      "4"
-      DisplayOption	      "none"
-      UseBusObject	      off
-      BusObject		      "BusObject"
-      NonVirtualBus	      off
-    }
-    Block {
       BlockType		      Outport
       Port		      "1"
       OutMin		      "[]"
@@ -1126,10 +1112,6 @@ Model {
       OutDataTypeStr	      "Inherit: Same as input"
       LockScale		      off
       RndMeth		      "Floor"
-    }
-    Block {
-      BlockType		      Scope
-      DefaultConfigurationName "Simulink.scopes.TimeScopeBlockCfg"
     }
     Block {
       BlockType		      Sin
@@ -1213,7 +1195,7 @@ Model {
   }
   System {
     Name		    "p5p1b"
-    Location		    [92, 151, 1394, 772]
+    Location		    [-1680, 121, -378, 742]
     Open		    on
     PortBlocksUseCompactNotation off
     SetExecutionDomain	    off
@@ -1228,9 +1210,9 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "125"
+    ZoomFactor		    "175"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "38"
+    SIDHighWatermark	    "39"
     Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
@@ -1246,8 +1228,8 @@ Model {
 	$ClassName		"Simulink.Mask"
 	Type			"Simple shipmodel for a cargo ship"
 	Description		"Measurement noise:\n	checked = noise on\n	unchecked = noise off \n\nCurrent:\n	checked = current on\n	u"
-	"nchecked = current off \n\nWaves: \n	checked = waves on\n	unchecked = waves off \n\nAuthor: JÃ¸rgen SpjÃ¸tvold, 9/10-"
-	"2003\nTTK 4115 Linear system theory.\nModified by Jostein Bakkeheim 26/10-2006\n"
+	"nchecked = current off \n\nWaves: \n	checked = waves on\n	unchecked = waves off \n\nAuthor: Jørgen Spjøtvold, 9/10-20"
+	"03\nTTK 4115 Linear system theory.\nModified by Jostein Bakkeheim 26/10-2006\n"
 	Array {
 	  Type			  "Simulink.MaskParameter"
 	  Dimension		  3
@@ -1319,8 +1301,8 @@ Model {
 	    $ObjectID		    25
 	    $ClassName		    "Simulink.Mask"
 	    Type		    "Cargo ship"
-	    Description		    "S-function which simulates a cargo ship.\n\nAuthor: JÃ¸rgen SpjÃ¸tvold\n20.10-2003\nModified by"
-	    " Jostein Bakkeheim 27.10.2006"
+	    Description		    "S-function which simulates a cargo ship.\n\nAuthor: Jørgen Spjøtvold\n20.10-2003\nModified by J"
+	    "ostein Bakkeheim 27.10.2006"
 	  }
 	}
 	Block {
@@ -1768,62 +1750,29 @@ Model {
 	Annotation {
 	  SID			  "27"
 	  Name			  "Degrees to rad"
-	  Position		  [146, 195, 214, 210]
+	  Position		  [146, 195, 214, 209]
 	  InternalMargins	  [0, 0, 0, 0]
 	  ZOrder		  -1
 	}
 	Annotation {
 	  SID			  "28"
 	  Name			  "Rad to deg"
-	  Position		  [447, 213, 497, 228]
+	  Position		  [447, 213, 497, 227]
 	  InternalMargins	  [0, 0, 0, 0]
 	  ZOrder		  -2
 	}
       }
     }
     Block {
-      BlockType		      Mux
-      Name		      "Mux"
-      SID		      "36"
-      Ports		      [2, 1]
-      Position		      [480, 316, 485, 354]
-      ZOrder		      49
-      ShowName		      off
-      Inputs		      "2"
-      DisplayOption	      "bar"
-    }
-    Block {
-      BlockType		      Reference
-      Name		      "North-East"
-      SID		      "29"
-      Ports		      [2]
-      Position		      [645, 198, 675, 242]
-      ZOrder		      -2
-      LibraryVersion	      "1.444"
-      SourceBlock	      "simulink/Sinks/XY Graph"
-      SourceType	      "XY scope."
-      SourceProductName	      "Simulink"
-      SourceProductBaseCode   "SL"
-      ContentPreviewEnabled   off
-      xmin		      "-5000"
-      xmax		      "5000"
-      ymin		      "-5000"
-      ymax		      "5000"
-      st		      "-1"
-    }
-    Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "30"
-      Ports		      [1]
-      Position		      [575, 154, 605, 186]
-      ZOrder		      -3
-      ScopeSpecificationString "C++SS(StrPVP('Location','[188, 365, 512, 604]'),StrPVP('Open','off'),MxPVP('AxesTitles"
-      "',53,'struct(''axes1'',''%<SignalLabel>'')'),StrPVP('ShowLegends','off'),StrPVP('DataFormat','StructureWithTime'"
-      "),StrPVP('BlockParamSampleTime','0'),StrPVP('LimitDataPoints','on'),StrPVP('Decimation','1'),StrPVP('BlockParamS"
-      "ampleInput','off'))"
-      NumInputPorts	      "1"
-      Floating		      off
+      BlockType		      Saturate
+      Name		      "Saturation"
+      SID		      "39"
+      Ports		      [1, 1]
+      Position		      [265, 199, 295, 221]
+      ZOrder		      52
+      InputPortMap	      "u0"
+      UpperLimit	      "45"
+      LowerLimit	      "-45"
     }
     Block {
       BlockType		      Sin
@@ -1838,26 +1787,12 @@ Model {
     }
     Block {
       BlockType		      ToWorkspace
-      Name		      "To Workspace"
-      SID		      "35"
-      Ports		      [1]
-      Position		      [540, 317, 640, 353]
-      ZOrder		      48
-      VariableName	      "coordinates_output"
-      MaxDataPoints	      "inf"
-      SaveFormat	      "Structure With Time"
-      Save2DSignal	      "3-D array (concatenate along third dimension)"
-      FixptAsFi		      on
-      SampleTime	      "-1"
-    }
-    Block {
-      BlockType		      ToWorkspace
       Name		      "To Workspace1"
       SID		      "37"
       Ports		      [1]
-      Position		      [540, 387, 640, 423]
+      Position		      [465, 282, 565, 318]
       ZOrder		      50
-      VariableName	      "compass_output"
+      VariableName	      "heading"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
       Save2DSignal	      "3-D array (concatenate along third dimension)"
@@ -1871,7 +1806,7 @@ Model {
       Ports		      [1]
       Position		      [255, 282, 355, 318]
       ZOrder		      51
-      VariableName	      "input"
+      VariableName	      "rudder"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
       Save2DSignal	      "3-D array (concatenate along third dimension)"
@@ -1879,56 +1814,12 @@ Model {
       SampleTime	      "-1"
     }
     Line {
-      ZOrder		      1
-      SrcBlock		      "Cargo ship"
-      SrcPort		      3
-      Points		      [32, 0]
-      Branch {
-	ZOrder			15
-	Points			[0, 115]
-	DstBlock		"Mux"
-	DstPort			2
-      }
-      Branch {
-	ZOrder			9
-	DstBlock		"North-East"
-	DstPort			2
-      }
-    }
-    Line {
-      ZOrder		      2
-      SrcBlock		      "Cargo ship"
-      SrcPort		      2
-      Points		      [13, 0]
-      Branch {
-	ZOrder			14
-	Points			[0, 115]
-	DstBlock		"Mux"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			11
-	DstBlock		"North-East"
-	DstPort			1
-      }
-    }
-    Line {
       ZOrder		      3
       SrcBlock		      "Cargo ship"
       SrcPort		      1
-      Points		      [76, 0]
-      Branch {
-	ZOrder			17
-	Points			[0, 215]
-	DstBlock		"To Workspace1"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			16
-	Points			[49, 0; 0, -20]
-	DstBlock		"Scope"
-	DstPort			1
-      }
+      Points		      [15, 0; 0, 110]
+      DstBlock		      "To Workspace1"
+      DstPort		      1
     }
     Line {
       ZOrder		      7
@@ -1942,15 +1833,15 @@ Model {
       }
       Branch {
 	ZOrder			25
-	DstBlock		"Cargo ship"
+	DstBlock		"Saturation"
 	DstPort			1
       }
     }
     Line {
-      ZOrder		      8
-      SrcBlock		      "Mux"
+      ZOrder		      32
+      SrcBlock		      "Saturation"
       SrcPort		      1
-      DstBlock		      "To Workspace"
+      DstBlock		      "Cargo ship"
       DstPort		      1
     }
   }

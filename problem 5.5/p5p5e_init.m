@@ -7,6 +7,8 @@ NUM_OF_PLOTS = 2;
 
 PLOT_PATH = 'plots/';
 
+filename = {'p5p5e_heading_kalman', 'p5p5e_wave_influence'};
+
 font_size = new_font_size();
                  
 %% Set up constants for later use
@@ -59,6 +61,10 @@ measurement_noise_variance = 0.0020; % Hardcoded to save time and resources
 Q = [30,    0;...
       0, 1E-6];
   
+Q_factor = 0.01;  
+  
+Q = Q_factor*Q;
+
 R = measurement_noise_variance/T_s;
 
 P_0_ = [1,     0,    0, 0,      0;...
@@ -84,22 +90,51 @@ sys_init = struct(...
 
 Simulink.Bus.createObject(sys_init);
 
-%% Task
+%% First plot of heading, estimated heading, rudder and estimated bias
 
-psi_reference = 30; % Degrees
+reference = 30; % Degrees
 
 sim('p5p5e.mdl');
 
-[heading, rudder, bias_est] = new_data(compass, rudder, bias_est);
+data1 = new_data(heading, heading_est, rudder, bias_est);
 
-labels = new_labels(...
-    'Heading with Kalman filter',...
-    {'$\psi$', '$\delta$', '$\hat{b}$'},...
+% labels_heading = new_labels(...
+%     'Heading with Kalman filter with $\hat{\psi}$ as feedback to controller',...
+%     {'$\psi$', '$\hat{\psi}$', '$\delta$', '$\hat{b}$'},...
+%     'Time [s]',...
+%     'Angle [$^{\circ}$]');
+
+labels_heading = new_labels(... Added to see difference in Qs
+    ['Heading with Kalman filter with $\hat{\psi}$ as feedback to controller. $\mathbf{Q''}=',num2str(Q_factor),'\mathbf{Q}$'],...
+    {'$\psi$', '$\hat{\psi}$', '$\delta$', '$\hat{b}$'},...
     'Time [s]',...
-    'Degrees [$^{\circ}$]');
+    'Angle [$^{\circ}$]');
 
-[fig1, pl] = plot_nice({heading, rudder, bias_est}, labels, font_size, 'grid');
-set_plot_parameters(pl, 'LineWidth', 3);
+% [fig1, pl] = plot_nice(data1, labels_heading, font_size, 'grid');
 
-filename = 'heading_with_kalman_p5p5d';
+%% Second plot of estimated and measured wave influence
+
+reference = 0; % Degrees
+
+sim('p5p5e_wave_influence.mdl');
+
+data2 = new_data(wave_influence, wave_influence_est);
+
+% labels_wave_influence = new_labels(...
+%     'Measured wave influence vs estimated wave influence',...
+%     {'$\psi_w$', '$\hat{\psi_w}$'},...
+%     'Time [s]',...
+%     'Angle [$^{\circ}$]');
+
+labels_wave_influence = new_labels(... Added to see difference in Qs
+    ['Measured wave influence vs estimated wave influence. $\mathbf{Q''}=',num2str(Q_factor),'\mathbf{Q}$'],...
+    {'$\psi_w$', '$\hat{\psi_w}$'},...
+    'Time [s]',...
+    'Angle [$^{\circ}$]');
+
+% [fig2, pl2] = plot_nice(data2, labels_wave_influence, font_size, 'grid');
+
+[fig, subp3] = subplot_nice({data1; data2}, {labels_heading; labels_wave_influence}, font_size, 'grid');
+set_line_width(fig, 2);
+filename = strcat('p5p5e_wave_influence_Q_', num2str(Q_factor));
 

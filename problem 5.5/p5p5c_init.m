@@ -54,11 +54,9 @@ C_d        = C;
 
 sim('p5p5b.mdl');
 
-measurement_noise = struct(...
-    'time', measurement_noise.time,...
-    'values', measurement_noise.signals.values);
+measurement_noise = new_data(measurement_noise);
 
-measurement_noise_variance = var(measurement_noise.values); % Degrees
+measurement_noise_variance = var(measurement_noise{1}.values); % Degrees
 
 %% Task c)
 
@@ -91,19 +89,19 @@ sys_init = struct(...
 Simulink.Bus.createObject(sys_init);
 %% Task d)
 
-psi_reference = 30; % Degrees
+reference = 30; % Degrees
 
 sim('p5p5d.mdl');
 
-heading = new_data(compass);
+data = new_data(heading, reference, rudder);
 
 labels = new_labels(...
-    'Heading with Kalman',...
-    '$\psi$',...
+    'Heading with Kalman filter, $\psi_r=30^{\circ}$',...
+    {'$\psi$', '$\psi_r$', '$\delta$'},...
     'Time [s]',...
-    'Degrees [$^{\circ}$]');
+    'Angle [$^{\circ}$]');
 
-plot_nice(heading, labels, font_size);
+[fig, pl] = plot_nice(data, labels, font_size, 'grid', 'thicklines');
 
 %%
 % heading_reference = 30; % Degrees

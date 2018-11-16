@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.86"
+    ComputedModelVersion    "1.95"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -75,8 +75,8 @@ Model {
 	ViewObjType		"SimulinkTopLevel"
 	LoadSaveID		"0"
 	Extents			[1882.0, 875.0]
-	ZoomFactor		[1.0]
-	Offset			[-489.38754214157069, -176.45398828993524]
+	ZoomFactor		[1.25]
+	Offset			[-372.161747493981, -217.56589747904633]
       }
       Object {
 	$PropName		"DockComponentsInfo"
@@ -110,9 +110,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Nov 15 21:13:12 2018"
-  RTWModifiedTimeStamp	  464217079
-  ModelVersionFormat	  "1.%<AutoIncrement:86>"
+  LastModifiedDate	  "Fri Nov 16 14:39:53 2018"
+  RTWModifiedTimeStamp	  464279759
+  ModelVersionFormat	  "1.%<AutoIncrement:95>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1129,10 +1129,6 @@ Model {
       RndMeth		      "Floor"
     }
     Block {
-      BlockType		      Scope
-      DefaultConfigurationName "Simulink.scopes.TimeScopeBlockCfg"
-    }
-    Block {
       BlockType		      SubSystem
       ShowPortLabels	      "FromPortIcon"
       Permissions	      "ReadWrite"
@@ -1209,6 +1205,10 @@ Model {
       ContinuousStateAttributes	"''"
       Realization	      "auto"
     }
+    Block {
+      BlockType		      ZeroOrderHold
+      SampleTime	      "1"
+    }
   }
   System {
     Name		    "p5p5e"
@@ -1227,15 +1227,15 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "125"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "64"
+    SIDHighWatermark	    "73"
     Block {
       BlockType		      SubSystem
       Name		      "Cargo ship"
       SID		      "1"
       Ports		      [1, 3]
-      Position		      [450, 138, 560, 242]
+      Position		      [620, 138, 730, 242]
       ZOrder		      -1
       BackgroundColor	      "green"
       RequestExecContextInheritance off
@@ -1784,16 +1784,16 @@ Model {
       BlockType		      Constant
       Name		      "Constant1"
       SID		      "49"
-      Position		      [-75, 162, 50, 218]
+      Position		      [-210, 162, -85, 218]
       ZOrder		      61
-      Value		      "psi_reference"
+      Value		      "reference"
     }
     Block {
       BlockType		      Demux
       Name		      "Demux"
       SID		      "52"
       Ports		      [1, 5]
-      Position		      [350, -7, 355, 137]
+      Position		      [305, -92, 310, 52]
       ZOrder		      64
       ShowName		      off
       Outputs		      "5"
@@ -1804,7 +1804,7 @@ Model {
       Name		      "MATLAB Function"
       SID		      "45"
       Ports		      [2, 1]
-      Position		      [185, 16, 310, 109]
+      Position		      [140, -69, 265, 24]
       ZOrder		      57
       ErrorFcn		      "Stateflow.Translate.translate"
       PermitHierarchicalResolution "ExplicitOnly"
@@ -1933,71 +1933,55 @@ Model {
     Block {
       BlockType		      Memory
       Name		      "Memory"
-      SID		      "56"
-      Position		      [550, -65, 580, -35]
-      ZOrder		      68
+      SID		      "69"
+      Position		      [670, -120, 700, -90]
+      ZOrder		      78
       BlockMirror	      on
+      NamePlacement	      "alternate"
     }
     Block {
       BlockType		      Memory
       Name		      "Memory1"
-      SID		      "57"
-      Position		      [470, 395, 500, 425]
-      ZOrder		      69
+      SID		      "70"
+      Position		      [185, 295, 215, 325]
+      ZOrder		      79
       BlockMirror	      on
+      NamePlacement	      "alternate"
     }
     Block {
       BlockType		      Memory
       Name		      "Memory2"
-      SID		      "58"
-      Position		      [365, -40, 395, -10]
-      ZOrder		      70
-      BlockMirror	      on
+      SID		      "71"
+      Position		      [525, 110, 555, 140]
+      ZOrder		      80
+      BlockRotation	      270
     }
     Block {
       BlockType		      TransferFcn
       Name		      "PD Regulator"
       SID		      "60"
-      Position		      [220, 172, 280, 208]
+      Position		      [110, 149, 290, 231]
       ZOrder		      72
       Numerator		      "K_pd*[T_d 1]"
       Denominator	      "[T_f 1]"
     }
     Block {
-      BlockType		      Scope
-      Name		      "Scope"
-      SID		      "30"
-      Ports		      [1]
-      Position		      [775, 139, 805, 171]
-      ZOrder		      -3
-      ScopeSpecificationString "Simulink.scopes.TimeScopeBlockCfg('CurrentConfiguration', extmgr.ConfigurationSet(extm"
-      "gr.Configuration('Core','General UI',true),extmgr.Configuration('Core','Source UI',true),extmgr.Configuration('S"
-      "ources','WiredSimulink',true,'DataLoggingSaveFormat','StructureWithTime','DataLoggingDecimation','1','DataLoggin"
-      "gDecimateData',true),extmgr.Configuration('Visuals','Time Domain',true,'SerializedDisplays',{struct('MinYLimReal"
-      "','29.82371','MaxYLimReal','30.18029','YLabelReal','','MinYLimMag','29.82371','MaxYLimMag','30.18029','LegendVis"
-      "ibility','Off','XGrid',true,'YGrid',true,'PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.68627450980"
-      "3922 0.686274509803922 0.686274509803922],'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764"
-      "706 1;1 0.411764705882353 0.16078431372549;0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823"
-      "529 0.274509803921569 1;0.0588235294117647 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>',"
-      "'LinePropertiesCache',{{}},'UserDefinedChannelNames',{{}},'NumLines',1,'LineNames',{{'Cargo ship/1'}},'ShowConte"
-      "nt',true,'Placement',1)},'DisplayPropertyDefaults',struct('MinYLimReal','29.82371','MaxYLimReal','30.18029','YLa"
-      "belReal','','MinYLimMag','29.82371','MaxYLimMag','30.18029','LegendVisibility','Off','XGrid',true,'YGrid',true,'"
-      "PlotMagPhase',false,'AxesColor',[0 0 0],'AxesTickColor',[0.686274509803922 0.686274509803922 0.686274509803922],"
-      "'ColorOrder',[1 1 0.0666666666666667;0.0745098039215686 0.623529411764706 1;1 0.411764705882353 0.16078431372549"
-      ";0.392156862745098 0.831372549019608 0.0745098039215686;0.717647058823529 0.274509803921569 1;0.0588235294117647"
-      " 1 1;1 0.0745098039215686 0.650980392156863],'Title','%<SignalLabel>','LinePropertiesCache',{{}},'UserDefinedCha"
-      "nnelNames',{{}},'NumLines',0,'LineNames',{{[]}},'ShowContent',true,'Placement',1)),extmgr.Configuration('Tools',"
-      "'Plot Navigation',true,'OnceAtStop',false,'PreviousZoomMode','ZoomOut'),extmgr.Configuration('Tools','Measuremen"
-      "ts',true,'Version','2017a')),'Version','2017a','Location',[165 288 1579 767])"
-      NumInputPorts	      "1"
-      Floating		      off
+      BlockType		      Saturate
+      Name		      "Saturation"
+      SID		      "65"
+      Ports		      [1, 1]
+      Position		      [565, 175, 595, 205]
+      ZOrder		      75
+      InputPortMap	      "u0"
+      UpperLimit	      "45"
+      LowerLimit	      "-45"
     }
     Block {
       BlockType		      Sum
       Name		      "Sum"
       SID		      "50"
       Ports		      [2, 1]
-      Position		      [110, 180, 130, 200]
+      Position		      [30, 180, 50, 200]
       ZOrder		      62
       ShowName		      off
       IconShape		      "round"
@@ -2011,7 +1995,7 @@ Model {
       Name		      "Sum1"
       SID		      "51"
       Ports		      [2, 1]
-      Position		      [360, 180, 380, 200]
+      Position		      [315, 180, 335, 200]
       ZOrder		      63
       ShowName		      off
       IconShape		      "round"
@@ -2025,9 +2009,9 @@ Model {
       Name		      "To Workspace1"
       SID		      "37"
       Ports		      [1]
-      Position		      [775, 392, 875, 428]
+      Position		      [815, 217, 915, 253]
       ZOrder		      50
-      VariableName	      "compass"
+      VariableName	      "heading"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
       Save2DSignal	      "3-D array (concatenate along third dimension)"
@@ -2037,10 +2021,10 @@ Model {
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace2"
-      SID		      "63"
+      SID		      "66"
       Ports		      [1]
-      Position		      [420, 287, 520, 323]
-      ZOrder		      75
+      Position		      [415, 22, 515, 58]
+      ZOrder		      76
       VariableName	      "bias_est"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
@@ -2051,10 +2035,10 @@ Model {
     Block {
       BlockType		      ToWorkspace
       Name		      "To Workspace3"
-      SID		      "64"
+      SID		      "67"
       Ports		      [1]
-      Position		      [420, 337, 520, 373]
-      ZOrder		      76
+      Position		      [630, 297, 730, 333]
+      ZOrder		      77
       VariableName	      "rudder"
       MaxDataPoints	      "inf"
       SaveFormat	      "Structure With Time"
@@ -2062,34 +2046,64 @@ Model {
       FixptAsFi		      on
       SampleTime	      "-1"
     }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace4"
+      SID		      "72"
+      Ports		      [1]
+      Position		      [-10, 112, 90, 148]
+      ZOrder		      81
+      VariableName	      "reference"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Structure With Time"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ToWorkspace
+      Name		      "To Workspace5"
+      SID		      "73"
+      Ports		      [1]
+      Position		      [415, -38, 515, -2]
+      ZOrder		      82
+      VariableName	      "heading_est"
+      MaxDataPoints	      "inf"
+      SaveFormat	      "Structure With Time"
+      Save2DSignal	      "3-D array (concatenate along third dimension)"
+      FixptAsFi		      on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      Name		      "Zero-Order\nHold"
+      SID		      "63"
+      Position		      [815, 140, 850, 170]
+      ZOrder		      73
+      SampleTime	      "T_s"
+    }
+    Block {
+      BlockType		      ZeroOrderHold
+      Name		      "Zero-Order\nHold1"
+      SID		      "64"
+      Position		      [485, 175, 520, 205]
+      ZOrder		      74
+      SampleTime	      "T_s"
+    }
     Line {
       ZOrder		      3
       SrcBlock		      "Cargo ship"
       SrcPort		      1
-      Points		      [71, 0]
+      Points		      [31, 0]
       Branch {
-	ZOrder			88
-	Points			[0, -205]
-	DstBlock		"Memory"
+	ZOrder			141
+	DstBlock		"Zero-Order\nHold"
 	DstPort			1
       }
       Branch {
-	ZOrder			30
-	Points			[0, 255]
-	Branch {
-	  ZOrder		  76
-	  DstBlock		  "Memory1"
-	  DstPort		  1
-	}
-	Branch {
-	  ZOrder		  75
-	  DstBlock		  "To Workspace1"
-	  DstPort		  1
-	}
-      }
-      Branch {
-	ZOrder			16
-	DstBlock		"Scope"
+	ZOrder			140
+	Points			[0, 80]
+	DstBlock		"To Workspace1"
 	DstPort			1
       }
     }
@@ -2097,7 +2111,24 @@ Model {
       ZOrder		      73
       SrcBlock		      "Constant1"
       SrcPort		      1
-      DstBlock		      "Sum"
+      Points		      [53, 0]
+      Branch {
+	ZOrder			145
+	Points			[0, -60]
+	DstBlock		"To Workspace4"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			144
+	DstBlock		"Sum"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      81
+      SrcBlock		      "Sum1"
+      SrcPort		      1
+      DstBlock		      "Zero-Order\nHold1"
       DstPort		      1
     }
     Line {
@@ -2111,42 +2142,25 @@ Model {
       ZOrder		      84
       SrcBlock		      "Demux"
       SrcPort		      5
-      Points		      [10, 0; 0, 34]
+      Points		      [10, 0]
       Branch {
-	ZOrder			103
-	Points			[28, 0; 0, 146]
-	DstBlock		"To Workspace2"
-	DstPort			1
-      }
-      Branch {
-	ZOrder			102
+	ZOrder			132
 	DstBlock		"Sum1"
 	DstPort			1
       }
+      Branch {
+	ZOrder			131
+	DstBlock		"To Workspace2"
+	DstPort			1
+      }
     }
     Line {
-      ZOrder		      91
-      SrcBlock		      "Memory"
+      ZOrder		      104
+      SrcBlock		      "Zero-Order\nHold"
       SrcPort		      1
-      Points		      [-442, 0; 0, 90]
-      DstBlock		      "MATLAB Function"
+      Points		      [19, 0; 0, -260]
+      DstBlock		      "Memory"
       DstPort		      1
-    }
-    Line {
-      ZOrder		      92
-      SrcBlock		      "Memory1"
-      SrcPort		      1
-      Points		      [-345, 0]
-      DstBlock		      "Sum"
-      DstPort		      2
-    }
-    Line {
-      ZOrder		      93
-      SrcBlock		      "Memory2"
-      SrcPort		      1
-      Points		      [-219, 0; 0, 110]
-      DstBlock		      "MATLAB Function"
-      DstPort		      2
     }
     Line {
       ZOrder		      96
@@ -2163,30 +2177,77 @@ Model {
       DstPort		      1
     }
     Line {
-      ZOrder		      81
-      SrcBlock		      "Sum1"
+      ZOrder		      105
+      SrcBlock		      "Zero-Order\nHold1"
+      SrcPort		      1
+      Points		      [15, 0]
+      Branch {
+	ZOrder			136
+	DstBlock		"Saturation"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			114
+	DstBlock		"Memory2"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      120
+      SrcBlock		      "Saturation"
       SrcPort		      1
       Points		      [4, 0]
       Branch {
-	ZOrder			105
-	Points			[0, 165]
+	ZOrder			124
+	Points			[0, 125]
 	DstBlock		"To Workspace3"
 	DstPort			1
       }
       Branch {
-	ZOrder			104
-	Points			[27, 0]
-	Branch {
-	  ZOrder		  86
-	  Points		  [0, -215]
-	  DstBlock		  "Memory2"
-	  DstPort		  1
-	}
-	Branch {
-	  ZOrder		  85
-	  DstBlock		  "Cargo ship"
-	  DstPort		  1
-	}
+	ZOrder			123
+	DstBlock		"Cargo ship"
+	DstPort			1
+      }
+    }
+    Line {
+      ZOrder		      133
+      SrcBlock		      "Memory"
+      SrcPort		      1
+      Points		      [-551, 0; 0, 60]
+      DstBlock		      "MATLAB Function"
+      DstPort		      1
+    }
+    Line {
+      ZOrder		      134
+      SrcBlock		      "Memory1"
+      SrcPort		      1
+      Points		      [-140, 0]
+      DstBlock		      "Sum"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      135
+      SrcBlock		      "Memory2"
+      SrcPort		      1
+      Points		      [0, -9; -424, 0; 0, -96]
+      DstBlock		      "MATLAB Function"
+      DstPort		      2
+    }
+    Line {
+      ZOrder		      166
+      SrcBlock		      "Demux"
+      SrcPort		      3
+      Points		      [50, 0]
+      Branch {
+	ZOrder			169
+	Points			[0, 330]
+	DstBlock		"Memory1"
+	DstPort			1
+      }
+      Branch {
+	ZOrder			168
+	DstBlock		"To Workspace5"
+	DstPort			1
       }
     }
   }
@@ -2214,9 +2275,6 @@ Stateflow {
     screen		    [1 1 3600 1200 1.180555555555556]
     treeNode		    [0 3 0 0]
     viewObj		    2
-    visible		    1
-    subviewS {
-    }
     ssIdHighWaterMark	    11
     decomposition	    CLUSTER_CHART
     type		    EML_CHART

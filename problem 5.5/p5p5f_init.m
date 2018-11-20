@@ -7,6 +7,8 @@ NUM_OF_PLOTS = 2;
 
 PLOT_PATH = 'plots/';
 
+filename = {'p5p5e_heading_kalman', 'p5p5e_wave_influence'};
+
 font_size = new_font_size();
                  
 %% Set up constants for later use
@@ -52,18 +54,14 @@ C_d        = C;
 
 %% Task b)
 
-sim('p5p5b.mdl');
+measurement_noise_variance = 0.0020; % Hardcoded to save time and resources
 
-measurement_noise = struct(...
-    'time', measurement_noise.time,...
-    'values', measurement_noise.signals.values);
+%% Set up for Kalman filter
 
-measurement_noise_variance = var(measurement_noise.values); % Degrees
-
-%% Task c)
-
-Q = [30,    0;...
-      0, 1E-6];
+q_w_w = 30;
+q_w_b = 1e-6;
+ 
+Q = diag([q_w_w q_w_b]);
 
 R = measurement_noise_variance/T_s;
 
@@ -89,24 +87,43 @@ sys_init = struct(...
     'R', R);
 
 Simulink.Bus.createObject(sys_init);
-%% Task d)
+
+%% Plotting
 
 reference = 30; % Degrees
 
-sim('p5p5d.mdl');
+sim('p5p5e.mdl');
 
-data_1 = new_data(heading, reference, rudder, bias_est);
+data1 = new_data(heading, heading_est, rudder, bias_est);
 
-labels_1 = new_labels(...
-    'Heading with Kalman with feed-forward and current disturbances.',...
-    {'$\psi$', '$\psi_r$', '$\delta$', '$\hat{b}$'},...
+labels_heading_2 = new_labels(... Added to see difference in Qs
+    ['Heading with Kalman filter with $\hat{\psi}$ as feedback to controller. $\mathbf{Q}=\pmatrix{', num2str(Q(1,1)), '& 0 \cr 0 &', num2str(Q(2,2)), '}$'],...
+    {'$\psi$', '$\hat{\psi}$', '$\delta$', '$\hat{b}$'},...
     'Time [s]',...
     'Angle [$^{\circ}$]');
 
-[fig, pl] = plot_nice(data_1, labels_1, font_size, 'grid');
-xlim([0 500])
-ylim([-35 55])
-set(pl, 'LineWidth', 2)
+reference = 0; % Degrees
+
+sim('p5p5f.mdl');
+
+data2 = new_data(wave_influence, wave_influence_est);
+
+labels_wave_influence = new_labels(... Added to see difference in Qs %['Measured wave influence vs estimated wave influence. $\mathbf{Q''}=\texttt{diag}\left(\left[',num2str(q_w_w),',~',num2str(q_w_b),'\right]\right)$'],
+    ['Measured wave influence vs estimated wave influence. $\mathbf{Q}=\pmatrix{', num2str(Q(1,1)), '& 0 \cr 0 &', num2str(Q(2,2)), '}$'],...
+    {'$\psi_w$', '$\hat{\psi}_w$'},...    
+    'Time [s]',...
+    'Angle [$^{\circ}$]');
+
+[fig, subp3] = subplot_nice({data1; data2}, {labels_heading_2; labels_wave_influence}, font_size, 'grid');
+
 set(fig, 'Units', 'Inches');
-set(fig, 'Position', [-14.6979    4.2813    7.9063    5.4896]);
-plot2pdf('plots/', 'p5p5d_with_current', fig);
+pos = [-19.9896    0.4271    9.9063    9.9375];
+set(fig, 'Position', pos);
+
+set_line_width(fig, 2);
+l = findall(fig, 'Type', 'Line');
+a = findall(fig, 'Type', 'Axes');
+%set(a, 'XLim', [0 500]);
+%set(a(2), 'YLim', [-35 55]);
+
+plot2pdf('plots/', 'p5p5f_low_q_w_b_and_low_q_w_w', fig)

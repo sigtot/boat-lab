@@ -47,25 +47,27 @@ transfer_fcn = structify_data(wout, [mag, phase]);
 % [fig_a, pl_a] = plot_nice(transfer_fcn{1}, labels_bode_amplitude, font_size, 'loglog', 'grid', 'thicklines');
 % [fig_b, pl_b] = plot_nice(transfer_fcn{2}, labels_bode_phase, font_size, 'loglog', 'grid', 'thicklines');
 
-[sub_fig, subp] = subplot_nice(transfer_fcn', {labels_bode_amplitude; labels_bode_phase}, font_size, 'loglog', 'grid', 'thicklines');
+% [sub_fig, subp] = subplot_nice(transfer_fcn', {labels_bode_amplitude; labels_bode_phase}, font_size, 'loglog', 'grid', 'thicklines');
 
 %% Task b)
 
-% heading_reference = 30; % Degrees
-% 
-% sim('p5p3b.mdl')
-% 
-% data = new_data(heading, reference, rudder);
-% title_field = strcat('Heading response to $\psi_r=30^{\circ}$, no disturbances. $K_{pd} = ', num2str(K_pd), '$');
-% 
-% labels = new_labels(title_field,...
-%                     {'$\psi_{ship}$', '$\psi_{r}$', '$\delta$'},...
-%                     'Time [s]',...
-%                     'Angle [$\circ$]');
-% 
-% fig3 = plot_nice(data, labels, font_size, 'thicklines', 'grid');
-%  
-% filename = strcat('heading_response_no_disturbances_p5p3b K_pd_', strrep(num2str(K_pd), '.', '_dot_'));
+heading_reference = 30; % Degrees
 
-% plot2pdf(PLOT_PATH, filename, fig3);
+sim('p5p3b.mdl')
 
+data_1 = new_data(heading, reference, rudder);
+
+labels_1 = new_labels(...
+        'Heading response to $\psi_r=30^{\circ}$ without disturbances',...
+       {'$\psi_{ship}$', '$\psi_{r}$', '$\delta$'},...
+        'Time [s]',...
+        'Angle [$\circ$]');
+
+[fig, pl] = plot_nice(data_1, labels_1, font_size, 'grid');
+xlim([0 500]); ylim([-35 55]);
+set(pl, 'LineWidth', 2);
+l = findall(fig, 'Type', 'Line');
+set(l(2), 'LineWidth', 3, 'LineStyle', '--');
+set(fig, 'Units', 'Inches');
+set(fig, 'Position', [-14.8750    4.2813    8.4834    5.4896]);
+plot2pdf('plots/', 'p5p3b_no_disturbances', fig);

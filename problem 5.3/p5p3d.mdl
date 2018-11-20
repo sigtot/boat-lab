@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.62"
+    ComputedModelVersion    "1.65"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -116,9 +116,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 16 13:19:51 2018"
-  RTWModifiedTimeStamp	  464275168
-  ModelVersionFormat	  "1.%<AutoIncrement:62>"
+  LastModifiedDate	  "Mon Nov 19 19:55:36 2018"
+  RTWModifiedTimeStamp	  464558134
+  ModelVersionFormat	  "1.%<AutoIncrement:65>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"

@@ -61,9 +61,9 @@ measurement_noise_variance = 0.0020; % Hardcoded to save time and resources
 Q = [30,    0;...
       0, 1E-6];
   
-Q_factor = 0.01;  
-  
-Q = Q_factor*Q;
+% Q_factor = 0.01;  
+%   
+% Q = Q_factor*Q;
 
 R = measurement_noise_variance/T_s;
 
@@ -90,7 +90,7 @@ sys_init = struct(...
 
 Simulink.Bus.createObject(sys_init);
 
-%% First plot of heading, estimated heading, rudder and estimated bias
+% First plot of heading, estimated heading, rudder and estimated bias
 
 reference = 30; % Degrees
 
@@ -104,37 +104,33 @@ data1 = new_data(heading, heading_est, rudder, bias_est);
 %     'Time [s]',...
 %     'Angle [$^{\circ}$]');
 
-labels_heading = new_labels(... Added to see difference in Qs
-    ['Heading with Kalman filter with $\hat{\psi}$ as feedback to controller. $\mathbf{Q''}=',num2str(Q_factor),'\mathbf{Q}$'],...
+labels_heading_1 = new_labels(... Added to see difference in Qs
+    ['Heading with Kalman filter with $\hat{\psi}$ as feedback to controller. $K_{pd}=', num2str(K_pd), '$'],...
     {'$\psi$', '$\hat{\psi}$', '$\delta$', '$\hat{b}$'},...
     'Time [s]',...
     'Angle [$^{\circ}$]');
 
 % [fig1, pl] = plot_nice(data1, labels_heading, font_size, 'grid');
 
-%% Second plot of estimated and measured wave influence
+reference = 30; % Degrees
+T_f = 8.391;
+K_pd = 0.8406; % Phase margin 50 degrees
 
-reference = 0; % Degrees
+sim('p5p5e.mdl');
 
-sim('p5p5e_wave_influence.mdl');
+data2 = new_data(heading, heading_est, rudder, bias_est);
 
-data2 = new_data(wave_influence, wave_influence_est);
-
-% labels_wave_influence = new_labels(...
-%     'Measured wave influence vs estimated wave influence',...
-%     {'$\psi_w$', '$\hat{\psi_w}$'},...
-%     'Time [s]',...
-%     'Angle [$^{\circ}$]');
-
-labels_wave_influence = new_labels(... Added to see difference in Qs
-    ['Measured wave influence vs estimated wave influence. $\mathbf{Q''}=',num2str(Q_factor),'\mathbf{Q}$'],...
-    {'$\psi_w$', '$\hat{\psi_w}$'},...
+labels_heading = new_labels(...
+    'Heading with Kalman with feed-forward and wave disturbances.',...
+    {'$\psi$', '$\hat{\psi}$', '$\delta$', '$\hat{b}$'},...
     'Time [s]',...
     'Angle [$^{\circ}$]');
 
-% [fig2, pl2] = plot_nice(data2, labels_wave_influence, font_size, 'grid');
+[fig1, pl] = plot_nice(data1, labels_heading, font_size, 'grid');
 
-[fig, subp3] = subplot_nice({data1; data2}, {labels_heading; labels_wave_influence}, font_size, 'grid');
-set_line_width(fig, 2);
-filename = strcat('p5p5e_wave_influence_Q_', num2str(Q_factor));
-
+xlim([0 500])
+ylim([-35 55])
+set(pl, 'LineWidth', 2)
+set(fig1, 'Units', 'Inches');
+set(fig1, 'Position', [-14.6979    4.2813    7.9063    5.4896]);
+plot2pdf('plots/', 'p5p5e_with_wave', fig1);

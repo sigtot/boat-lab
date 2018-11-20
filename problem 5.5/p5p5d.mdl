@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.95"
+    ComputedModelVersion    "1.96"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -110,9 +110,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Odin"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Nov 16 15:22:19 2018"
-  RTWModifiedTimeStamp	  464282534
-  ModelVersionFormat	  "1.%<AutoIncrement:95>"
+  LastModifiedDate	  "Sun Nov 18 11:38:20 2018"
+  RTWModifiedTimeStamp	  464441886
+  ModelVersionFormat	  "1.%<AutoIncrement:96>"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
   LibraryLinkDisplay	  "none"
@@ -1269,7 +1269,7 @@ Model {
 	    Type		    "checkbox"
 	    Name		    "logic"
 	    Prompt		    "waves"
-	    Value		    "on"
+	    Value		    "off"
 	  }
 	  PropName		  "Parameters"
 	}
